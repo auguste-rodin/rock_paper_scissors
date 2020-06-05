@@ -3,33 +3,76 @@
 <head>
   <title>Page Title</title>
   <meta charset="UTF-8"/>
-</head>
+</head> 
 <body>
   <script>
     // Your JavaScript goes here!
-    const choices = ["rock", "paper", "scissors"];
+   let win = 0;
+   let loss = 0;
+   let tie = 0;
 
-    function compare(playerChoice, computerChoice) {
-      playerChoice = choices.indexOf(playerChoice);
-      computerChoice = choices.indexOf(computerChoice);
-      if (playerChoice == computerChoice) {
-          return "Tie";
-      }
-      if (playerChoice == choices.length - 1 && computerChoice == 0) {
-          return "Right wins";
-      }
-      if (computerChoice == choices.length - 1 && playerChoice == 0) {
-          return "Left wins";
-      }
-      if (playerChoice > computerChoice) {
-          return "Left wins";
-      } else {
-          return "Right wins";
-      }
-    }
+   for(i = 0; i < 5; i++) {
+
+     let playerSelection = prompt("rock, paper or scissors?");
+     if (! playerSelection) {
+       document.write("<p>C'mon refresh and play properly.</p>");
+     } else {
+       document.write("<p>Player 1:" + " " + playerSelection + "</p>");
+     }
+   
+   
+   let computerSelection = Math.random();
+   if (computerSelection < 0.34) {
+     computerSelection = "rock";
+   } else if(computerSelection <= 0.67) {
+     computerSelection = "paper";
+   } else {
+     computerSelection = "scissors";
+   }
+
+   document.write("<p>Computer:" + " " + computerSelection + "</p>");
+
+   let playRound = function(choice1,choice2) {
+     if (choice1 === choice2) {
+       tie+=1;
+       return "It's a tie!";
+     }
+     if (choice1 === "rock") {
+       if (choice2 === "scissors") {
+         win+=1;
+         return "You win!";
+       } else {
+         loss+=1;
+         return "You lose! Try again.";
+       }
+     }
+     if (choice1 === "paper") {
+       if (choice2 == "rock") {
+         win+=1;
+         return "You win!";
+       } else {
+         loss+=1;
+         return "You lose! Try again.";
+       }
+     }
+     if (choice1 === "scissors") {
+       if (choice2 === "rock") {
+         loss+=1;
+         return "You lose! Try again.";
+       } else {
+         win+=1;
+         return "You win!";
+       }
+     }
+   };
+
+   let results = playRound(playerSelection,computerSelection);
+
+   document.write("<br><hr><b>Results: </b>" + results);
+
+   }
+   document.write("<br/>Final Results: W-"+win+"; L-"+loss+"; T-"+tie+";");
     
-    console.log(compare("rock", " "));
-     
   </script>
 </body>
 </html>
