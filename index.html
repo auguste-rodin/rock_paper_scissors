@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+    // Your JavaScript goes here!
+    const choices = ["rock", "paper", "scissors"];
+
+    function compare(playerChoice, computerChoice) {
+      playerChoice = choices.indexOf(playerChoice);
+      computerChoice = choices.indexOf(computerChoice);
+      if (playerChoice == computerChoice) {
+          return "Tie";
+      }
+      if (playerChoice == choices.length - 1 && computerChoice == 0) {
+          return "Right wins";
+      }
+      if (computerChoice == choices.length - 1 && playerChoice == 0) {
+          return "Left wins";
+      }
+      if (playerChoice > computerChoice) {
+          return "Left wins";
+      } else {
+          return "Right wins";
+      }
+    }
+    
+    console.log(compare("rock", " "));
+     
+  </script>
+</body>
+</html>
